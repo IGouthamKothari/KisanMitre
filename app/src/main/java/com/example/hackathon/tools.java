@@ -4,11 +4,11 @@ public class tools {
 
     String title;
     String rent;
-    int toolimage;
+    int toolImage;
 
-    public tools(String title, String rent, int toolimage) {
+    public tools(String title, String rent, int toolImage) {
         this.title = title;
         this.rent = rent;
-        this.toolimage = toolimage;
+        this.toolImage = toolImage;
     }
 }
