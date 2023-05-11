@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">hackathon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tool1">Tractor</string>
+    <string name="tool2">Plough</string>
+    <string name="tool3">Harrow</string>
+    <string name="tool4">Harvester</string>
+    <string name="tool5">Shovel</string>
+
+    <string name="tool1rent">1000/day</string>
+    <string name="tool2rent">250/day</string>
+    <string name="tool3rent">300/day</string>
+    <string name="tool4rent">2000/day</string>
+    <string name="tool5rent">50/day</string>
+
+
+</resources>
