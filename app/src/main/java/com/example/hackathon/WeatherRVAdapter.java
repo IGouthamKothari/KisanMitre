@@ -40,11 +40,13 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
 
         WeatherRVModel model= WeatherRVModelArrayList.get(position);
         holder.temperatureTV.setText(model.getTemperature()+"°C");
-       // if (holder.conditionIV != null) {
-           // Picasso.get().load("http:".concat(model.getIcon())).into(holder.conditionIV);
-       // }
 
-        if (holder.conditionIV != null) {
+       //if (holder.conditionIV != null) {
+            Picasso.get().load("http:".concat(model.getIcon())).into(holder.conditionIV);
+        //}
+
+
+       /* if (holder.conditionIV != null) {
             Picasso.get()
                     .load("http:".concat(model.getIcon()))
                     .fit()
@@ -60,7 +62,7 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
                             // Failed to load image
                         }
                     });
-        }
+        } */
 
         holder.windTV.setText(model.getWindspeed()+"km/h");
         SimpleDateFormat input =new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -89,7 +91,7 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
             windTV=itemView.findViewById(R.id.TVWindSpeed);
             temperatureTV=itemView.findViewById(R.id.TVTemperature);
             timeTV=itemView.findViewById(R.id.TVTime);
-            conditionIV=itemView.findViewById(R.id.TVCondition);
+            conditionIV=itemView.findViewById(R.id.IVCondition);
         }
     }
 }

@@ -97,6 +97,10 @@ public class HomeFragment extends Fragment {
                 getString(R.string.tool3),
                 getString(R.string.tool4),
                 getString(R.string.tool5),
+                "Rotavator",
+                "Seed drill",
+                "Pesticide spray",
+                "Cultivator",
 
         };
 
@@ -106,16 +110,24 @@ public class HomeFragment extends Fragment {
                 getString(R.string.tool3rent),
                 getString(R.string.tool4rent),
                 getString(R.string.tool5rent),
+                "150/day",
+                "150/day",
+                "50/day",
+                "100/day",
 
 
         };
 
         imageResourceId=new int[]{
                 R.drawable.tractor,
-                R.drawable.tractor,
-                R.drawable.tractor,
-                R.drawable.tractor,
-                R.drawable.tractor,
+                R.drawable.plough,
+                R.drawable.harrow,
+                R.drawable.harvester,
+                R.drawable.shovel,
+                R.drawable.rotavator,
+                R.drawable.seeddrill,
+                R.drawable.spray,
+                R.drawable.cultivator,
 
 
 
