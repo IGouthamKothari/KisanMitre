@@ -62,12 +62,13 @@ weather updates, including temperature, humidity, rainfall, and other relevant m
 <p><h2><a id="index5"></a>❕ Permissions</h2></p>
 - Read External Storage <br/>
 - Internet
+- Location 
 
 
 <p><h2><a id="index6"></a>⛏ Requirements</h2></p>
 
 - Android version 5.0 and above
-- Minimum API Version: 21
+- Minimum API Version: 31
 
 <p><h2><a id="index7"></a>🖼 App Screenshots</h2></p>
 <table>
