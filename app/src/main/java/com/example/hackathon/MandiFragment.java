@@ -35,7 +35,7 @@ public class MandiFragment extends Fragment {
     private TextView tvStateSpinner, tvDistrictSpinner, tvCropSpinner; // TextViews to show the errors
     private Spinner stateSpinner, districtSpinner, cropSpinner; // Spinners
     private ArrayAdapter<CharSequence> stateAdapter, districtAdapter, cropAdapter;
-    private TextView tvMinPrice, tvMaxPrice;// Adapters for the spinners
+    private TextView tvMinPrice, tvMaxPrice,tvMandi;// Adapters for the spinners
 
     public MandiFragment() {
         // Required empty public constructor
@@ -53,6 +53,7 @@ public class MandiFragment extends Fragment {
 
         tvMinPrice = view.findViewById(R.id.minPriceTV);
         tvMaxPrice = view.findViewById(R.id.maxPriceTV);
+        tvMandi=view.findViewById(R.id.mandiTextView);
 
         // State Spinner Initialization
         stateSpinner = view.findViewById(R.id.spinner_indian_states);
@@ -292,11 +293,14 @@ public class MandiFragment extends Fragment {
                         JSONObject record = recordsArray.getJSONObject(0);
                         String minPrice = record.getString("min_price");
                         String maxPrice = record.getString("max_price");
+                        String mandi=record.getString("market");
                         requireActivity().runOnUiThread(() -> {
                             tvMinPrice.setVisibility(View.VISIBLE);
                             tvMaxPrice.setVisibility(View.VISIBLE);
+                            tvMandi.setVisibility(View.VISIBLE);
                             tvMinPrice.setText("Min Price: " + minPrice);
                             tvMaxPrice.setText("Max Price: " + maxPrice);
+                            tvMandi.setText("Mandi: "+ mandi);
                             Toast.makeText(requireContext(), "Min Price: " + minPrice + ", Max Price: " + maxPrice, Toast.LENGTH_SHORT).show();
                             // TODO: Update the UI elements with the min and max prices
                         });
@@ -306,7 +310,7 @@ public class MandiFragment extends Fragment {
                             @Override
                             public void run() {
                                 // Update the UI with the min and max prices
-                                updateMinAndMaxPrices(minPrice, maxPrice);
+                                updateMinAndMaxPrices(minPrice, maxPrice, mandi);
                             }
                         }, 10000); // 10 seconds delay
                     } else {
@@ -344,9 +348,10 @@ public class MandiFragment extends Fragment {
         queue.add(request);
     }
 
-    private void updateMinAndMaxPrices(String minPrice, String maxPrice) {
+    private void updateMinAndMaxPrices(String minPrice, String maxPrice, String mandi) {
         tvMinPrice.setText("Min Price: " + minPrice);
         tvMaxPrice.setText("Max Price: " + maxPrice);
+        tvMandi.setText("Mandi: " + mandi);
 
 
     }

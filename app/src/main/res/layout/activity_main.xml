@@ -50,6 +50,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navmenu"
-        android:background="@color/purple_500"
+        android:background="@color/black"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

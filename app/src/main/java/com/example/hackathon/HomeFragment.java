@@ -220,13 +220,53 @@ public class HomeFragment extends Fragment {
                 "\n"+
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
 
-                "",
+                "Name Of equipment: Rotavator\n" +
+                        "\n"+
+                        "Brand: AMAR\n" +
+                        "\n"+
+                        "Model Name/Number: Till Cruiser Semi Series\n" +
+                        "\n"+
+                        "Overall Width (Feet): 5,6,7,8,9 Feet Available\n" +
+                        "\n"+
+                        "Usage/Application: Tilling"+
+                        "\n"+
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
 
-                "9999999999",
+                "Type: Till Drill\n" +
+                        "\n"+
+                        "Usage/Application: Agriculture\n" +
+                        "\n"+
+                        "Brand: Dasmesh\n" +
+                        "\n"+
+                        "Size: 7 Feet\n" +
+                        "\n"+
+                        "Material: Mild Steel"+
+                        "\n"+
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
 
-                "9999999999",
+                "Brand: Neptune\n" +
+                        "\n"+
+                        "Capacity: 16 Ltr/ 18Ltr\n" +
+                        "\n"+
+                        "Weight: 6.69 kg\n" +
+                        "\n"+
+                        "Size: 38.2x21x48.5 cm\n" +
+                        "\n"+
+                        "Model Number: BS-21 Plus"+
+                        "\n"+
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
 
-                "9999999999",
+                "Cultivation Width: 6-8 Feet\n" +
+                        "\n"+
+                        "Number of Tynes: 8-10\n" +
+                        "\n"+
+                        "Tractor Power: 41-50 HP\n" +
+                        "\n"+
+                        "Type: Trailed\n" +
+                        "\n"+
+                        "Finishing: Coated"+
+                        "\n"+
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
 
 
 

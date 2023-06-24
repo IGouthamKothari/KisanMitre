@@ -2,12 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Home"
-        android:icon="@drawable/test"
-        android:id="@+id/home"/>
+        android:icon="@drawable/home"
+        android:id="@+id/home"
+        android:tint="@android:color/black"/>
 
     <item android:title="Crop Prediction"
         android:icon="@drawable/crop"
-        android:id="@+id/cropPrediction"/>
+        android:id="@+id/cropPrediction"
+        android:tint="@android:color/black"/>
 
     <item android:title="Weather"
         android:icon="@drawable/weather"
