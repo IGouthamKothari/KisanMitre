@@ -95,7 +95,7 @@
     <string-array name="array_haryana_districts">
         <item>Select Your District</item>
         <item>Ambala</item><item>Bhiwani</item><item>Charkhi Dadri</item><item>Faridabad</item><item>Fatehabad</item><item>Gurugram</item>
-        <item>Hisar</item><item>Jhajjar</item><item>Jind</item><item>Kaithal</item><item>Karnal</item><item>Kurukshetra</item>
+        <item>Hissar</item><item>Jhajjar</item><item>Jind</item><item>Kaithal</item><item>Karnal</item><item>Kurukshetra</item>
         <item>Mahendragarh</item><item>Mewat</item><item>Palwal</item><item>Panchkula</item><item>Panipat</item><item>Rewari</item>
         <item>Rohtak</item><item>Sirsa</item><item>Sonipat</item><item>Yamunanagar</item>
     </string-array>

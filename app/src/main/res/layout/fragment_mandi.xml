@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:textSize="18sp"
-            android:text="Learning Multiple Spinners "
+            android:text="Today Mandi Price"
+            android:textStyle="bold"
+            
             android:textAlignment="center"
             android:textColor="#555555" />
 
@@ -98,6 +100,28 @@
             android:paddingRight="40dp"
             android:text="Submit"
             android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/minPriceTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_below="@id/btn_search"
+            android:visibility="gone"
+            android:text="MinPrice"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/maxPriceTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_below="@id/minPriceTV"
+            android:visibility="gone"
+            android:text="MaxPrice"
+            android:textAlignment="center"/>
+
+
 
     </RelativeLayout>
     <!-- End of Relative Layout -->

@@ -1,6 +1,8 @@
 package com.example.hackathon;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +17,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MandiFragment extends Fragment {
 
     private String selectedState, selectedDistrict, selectedCrop; // Variables to hold the values of selected State, District, and Crop
     private TextView tvStateSpinner, tvDistrictSpinner, tvCropSpinner; // TextViews to show the errors
     private Spinner stateSpinner, districtSpinner, cropSpinner; // Spinners
-    private ArrayAdapter<CharSequence> stateAdapter, districtAdapter, cropAdapter; // Adapters for the spinners
+    private ArrayAdapter<CharSequence> stateAdapter, districtAdapter, cropAdapter;
+    private TextView tvMinPrice, tvMaxPrice;// Adapters for the spinners
 
     public MandiFragment() {
         // Required empty public constructor
@@ -35,6 +50,9 @@ public class MandiFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        tvMinPrice = view.findViewById(R.id.minPriceTV);
+        tvMaxPrice = view.findViewById(R.id.maxPriceTV);
 
         // State Spinner Initialization
         stateSpinner = view.findViewById(R.id.spinner_indian_states);
@@ -54,12 +72,12 @@ public class MandiFragment extends Fragment {
         tvDistrictSpinner = view.findViewById(R.id.textView_indian_districts);
 
 
-
         // When any item of the stateSpinner is selected
         stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedState = stateSpinner.getSelectedItem().toString(); // Obtain the selected State
+                String state = selectedState;
 
                 if (!selectedState.equals("Select Your State")) {
                     switch (selectedState) {
@@ -203,6 +221,7 @@ public class MandiFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedDistrict = districtSpinner.getSelectedItem().toString(); // Obtain the selected District
+                String district = selectedDistrict;
             }
 
             @Override
@@ -219,6 +238,7 @@ public class MandiFragment extends Fragment {
                 if (selectedState != null && selectedDistrict != null) {
                     // Perform the search operation with selectedState and selectedDistrict
                     Toast.makeText(requireContext(), "Searching for Mandi in " + selectedDistrict + ", " + selectedState, Toast.LENGTH_SHORT).show();
+                    getCropInfo(selectedState, selectedDistrict, selectedCrop);
                 } else {
                     // Show error message if State or District is not selected
                     Toast.makeText(requireContext(), "Please select State and District", Toast.LENGTH_SHORT).show();
@@ -242,12 +262,92 @@ public class MandiFragment extends Fragment {
         cropSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedCrop = cropSpinner.getSelectedItem().toString(); // Obtain the selected Crop
+                selectedCrop = cropSpinner.getSelectedItem().toString();// Obtain the selected Crop
+                String crop = selectedCrop;
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Do nothing
             }
         });
+
+
+    }
+
+    private void getCropInfo(String state, String district, String crop) {
+        String url = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&filters%5Bstate%5D=" + state + "&filters%5Bdistrict%5D=" + district + "&filters%5Bcommodity%5D=" + crop;
+
+        // Create a Volley request queue
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+
+        // Create a JSON object request
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray recordsArray = response.getJSONArray("records");
+
+                    if (recordsArray.length() > 0) {
+                        JSONObject record = recordsArray.getJSONObject(0);
+                        String minPrice = record.getString("min_price");
+                        String maxPrice = record.getString("max_price");
+                        requireActivity().runOnUiThread(() -> {
+                            tvMinPrice.setVisibility(View.VISIBLE);
+                            tvMaxPrice.setVisibility(View.VISIBLE);
+                            tvMinPrice.setText("Min Price: " + minPrice);
+                            tvMaxPrice.setText("Max Price: " + maxPrice);
+                            Toast.makeText(requireContext(), "Min Price: " + minPrice + ", Max Price: " + maxPrice, Toast.LENGTH_SHORT).show();
+                            // TODO: Update the UI elements with the min and max prices
+                        });
+
+                        // Delay the execution of code for 10 seconds
+                        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Update the UI with the min and max prices
+                                updateMinAndMaxPrices(minPrice, maxPrice);
+                            }
+                        }, 10000); // 10 seconds delay
+                    } else {
+                        requireActivity().runOnUiThread(() -> {
+                            // Hide the UI elements for min and max prices
+                            tvMinPrice.setVisibility(View.GONE);
+                            tvMaxPrice.setVisibility(View.GONE);
+                            Toast.makeText(requireContext(), "No records found", Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    requireActivity().runOnUiThread(() -> {
+                        // Hide the UI elements for min and max prices
+                        tvMinPrice.setVisibility(View.GONE);
+                        tvMaxPrice.setVisibility(View.GONE);
+                        Toast.makeText(requireContext(), "Error occurred", Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                requireActivity().runOnUiThread(() -> {
+                    // Hide the UI elements for min and max prices
+                    tvMinPrice.setVisibility(View.GONE);
+                    tvMaxPrice.setVisibility(View.GONE);
+                    Toast.makeText(requireContext(), "Error occurred", Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
+
+        // Add the request to the Volley request queue
+        queue.add(request);
+    }
+
+    private void updateMinAndMaxPrices(String minPrice, String maxPrice) {
+        tvMinPrice.setText("Min Price: " + minPrice);
+        tvMaxPrice.setText("Max Price: " + maxPrice);
+
+
     }
 }
