@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Home"
-        android:icon="@drawable/home"
+        android:icon="@drawable/test"
         android:id="@+id/home"/>
 
     <item android:title="Crop Prediction"
@@ -12,4 +12,8 @@
     <item android:title="Weather"
         android:icon="@drawable/weather"
         android:id="@+id/weather"/>
+
+    <item android:title="Mandi"
+        android:icon="@drawable/mandi"
+        android:id="@+id/mandi" />
 </menu>

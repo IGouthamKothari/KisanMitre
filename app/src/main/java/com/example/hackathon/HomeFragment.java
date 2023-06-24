@@ -34,7 +34,9 @@ public class HomeFragment extends Fragment {
     private int[] imageResourceId;
     private String[] toolsTitle;
     private String[] toolsRent;
+    private String[] phoneNumber;
     private RecyclerView recyclerview;
+    private String[] description;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -133,9 +135,106 @@ public class HomeFragment extends Fragment {
 
         };
 
+        phoneNumber= new String[]{
+                "9999999999",
+                "9999999999",
+                "9999999999",
+                "9999999999",
+                "9999999999",
+                "9999999999",
+                "9999999999",
+                "9999999999",
+                "9999999999",
+
+
+
+        };
+
+        description= new String[]{
+                "Service Location: Bihar\n" +
+                        "\n" +
+                        "Engine Power: 50 HP\n" +
+                        "\n" +
+                        "Brand: Mahindra\n" +
+                        "\n" +
+                        "Number Of Gears: 8F+2R\n" +
+                        "\n" +
+                        "Lifting Capacity: 1640 Kg\n" +
+                        "\n" +
+                        "Clutch Type: Heavy Duty Diaphragm Type\n"+
+                        "\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
+
+                        "Brand: TK Agro Industries\n" +
+                                "\n" +
+                                "Model Name/Number: Plough Cultivator\n" +
+                                "\n" +
+                                "No Of Tynes: 5 Tynes\n" +
+                                "\n" +
+                                "Type: Rigid Type\n" +
+                                "\n" +
+                                "Tractor Power: 40 hp\n"+
+                "\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
+
+
+                "Usage/Application: Agriculture\n" +
+                        "\n" +
+                        "Model Name/Number: Harrow Disc\n" +
+                        "\n" +
+                        "Material: Carbon , Boron\n" +
+                        "\n" +
+                        "Type Of Disc Harrow: Offset Discs Harrow\n" +
+                        "\n" +
+                        "Brand: JRS\n" +
+                        "\n" +
+                        "Product Type: Harrow Disc Blade"+
+                "\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
+
+                "Crops: Paddy\n" +
+                        "\n"+
+                        "Brand: Preet\n" +
+                        "\n"+
+                        "Model Name/Number\t9100\n" +
+                        "\n"+
+                        "Power HP\t101 HP\n" +
+                        "\n"+
+                        "Cutter Bar Width\t8 Feet\n" +
+                        "\n"+
+                        "Grain Tank Capacity\t2 TON\n" +
+                        "\n"+
+
+                        "Number of Straw Walker\t4"+
+                            "\n"+
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
+
+
+                "Handle: Iron\n" +
+                        "\n"+
+                        "Usage/Application: Agriculture\n" +
+                        "\n"+
+                        "Color: Black\n" +
+                        "\n"+
+                        "Brand: Star pieces per bag"+
+                "\n"+
+                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCall",
+
+                "",
+
+                "9999999999",
+
+                "9999999999",
+
+                "9999999999",
+
+
+
+        };
+
         for (int i=0; i<toolsTitle.length; i++){
 
-            tools tools =new tools(toolsTitle[i],toolsRent[i],imageResourceId[i]);
+            tools tools =new tools(toolsTitle[i],toolsRent[i],imageResourceId[i], phoneNumber[i],description[i]);
             toolsArrayList.add(tools);
 
 

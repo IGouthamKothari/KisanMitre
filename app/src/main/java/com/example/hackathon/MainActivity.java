@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new WeatherFragment());
                     break;
 
+                case R.id.mandi:
+                    replaceFragment(new Mandi());
+                    break;
+
+
             }
             return true;
 

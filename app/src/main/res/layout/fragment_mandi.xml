@@ -24,7 +24,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="Let's Predict your crop"
+                android:text="Check Mandi Price"
                 android:textSize="30sp"
                 android:layout_marginTop="20sp"
                 android:textStyle="bold"
