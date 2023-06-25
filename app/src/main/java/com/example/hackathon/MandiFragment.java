@@ -277,7 +277,7 @@ public class MandiFragment extends Fragment {
     }
 
     private void getCropInfo(String state, String district, String crop) {
-        String url = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&format=json&filters%5Bstate%5D=" + state + "&filters%5Bdistrict%5D=" + district + "&filters%5Bcommodity%5D=" + crop;
+        String url = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000016c510d76a3834c467e28c4438b495296&format=json&filters%5Bstate%5D=Andhra%20Pradesh";
 
         // Create a Volley request queue
         RequestQueue queue = Volley.newRequestQueue(requireContext());

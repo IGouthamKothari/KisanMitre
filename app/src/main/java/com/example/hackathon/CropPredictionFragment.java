@@ -1,18 +1,19 @@
 package com.example.hackathon;
 
-import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,25 +29,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CropPredictionFragment extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
-    public CropPredictionFragment() {
-        // Required empty public constructor
-    }
-
-    public static CropPredictionFragment newInstance(String param1, String param2) {
-        CropPredictionFragment fragment = new CropPredictionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     private EditText Nitrogen, Phosphorus, Potassium, Temperature, Humidity, pH, Rainfall;
     private Button Predict;
@@ -73,51 +55,127 @@ public class CropPredictionFragment extends Fragment {
         Predict = view.findViewById(R.id.predictButton);
         ResultTv = view.findViewById(R.id.resultTV);
 
+        // Add TextWatchers for each EditText
+        Nitrogen.addTextChangedListener(createTextWatcher(0, 300, "Enter a value between 0 and 300"));
+        Phosphorus.addTextChangedListener(createTextWatcher(0, 200, "Enter a value between 0 and 200"));
+        Potassium.addTextChangedListener(createTextWatcher(0, 300, "Enter a value between 0 and 300"));
+        Temperature.addTextChangedListener(createTextWatcher(-50, 60, "Enter a value between -50 and 60"));
+        Humidity.addTextChangedListener(createTextWatcher(0, 100, "Enter a value between 0 and 100"));
+        pH.addTextChangedListener(createTextWatcher(1, 14, "Enter a value between 1 and 14"));
+        Rainfall.addTextChangedListener(createTextWatcher(0, 3000, "Enter a value between 0 and 3000"));
+
         Predict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    String data = jsonObject.getString("crops");
-                                    ResultTv.setText(data);
-
-                                    // Add a delay of 10 seconds before clearing the result
-
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+                if (isValidInput()) {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        String data = jsonObject.getString("crops");
+                                        ResultTv.setText(data);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // Handle error response
-                            }
-                        }) {
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("N", Nitrogen.getText().toString());
-                        params.put("P", Phosphorus.getText().toString());
-                        params.put("K", Potassium.getText().toString());
-                        params.put("temperature", Temperature.getText().toString());
-                        params.put("humidity", Humidity.getText().toString());
-                        params.put("ph", pH.getText().toString());
-                        params.put("rainfall", Rainfall.getText().toString());
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // Handle error response
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("N", Nitrogen.getText().toString());
+                            params.put("P", Phosphorus.getText().toString());
+                            params.put("K", Potassium.getText().toString());
+                            params.put("temperature", Temperature.getText().toString());
+                            params.put("humidity", Humidity.getText().toString());
+                            params.put("ph", pH.getText().toString());
+                            params.put("rainfall", Rainfall.getText().toString());
 
-                        return params;
+                            return params;
+                        }
+                    };
 
-                    }
-                };
-
-                RequestQueue queue = Volley.newRequestQueue(requireContext());
-                queue.add(stringRequest);
+                    RequestQueue queue = Volley.newRequestQueue(requireContext());
+                    queue.add(stringRequest);
+                } else {
+                    Toast.makeText(requireContext(), "Please enter correct values", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    private TextWatcher createTextWatcher(final float minValue, final float maxValue, final String errorMessage) {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    float value = Float.parseFloat(s.toString());
+                    if (value < minValue || value > maxValue) {
+                        s.setError(errorMessage);
+                    }
+                } catch (NumberFormatException e) {
+                    s.setError("Invalid input");
+                }
+            }
+        };
+    }
+
+    private boolean isValidInput() {
+        try {
+            float n = Float.parseFloat(Nitrogen.getText().toString());
+            float p = Float.parseFloat(Phosphorus.getText().toString());
+            float k = Float.parseFloat(Potassium.getText().toString());
+            float temp = Float.parseFloat(Temperature.getText().toString());
+            float humidity = Float.parseFloat(Humidity.getText().toString());
+            float ph = Float.parseFloat(pH.getText().toString());
+            float rainfall = Float.parseFloat(Rainfall.getText().toString());
+
+            if (n < 0 || n > 300) {
+                return false;
+            }
+
+            if (p < 0 || p > 200) {
+                return false;
+            }
+
+            if (k < 0 || k > 300) {
+                return false;
+            }
+
+            if (temp < -50 || temp > 60) {
+                return false;
+            }
+
+            if (humidity < 0 || humidity > 100) {
+                return false;
+            }
+
+            if (ph < 1 || ph > 14) {
+                return false;
+            }
+
+            if (rainfall < 0 || rainfall > 3000) {
+                return false;
+            }
+
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

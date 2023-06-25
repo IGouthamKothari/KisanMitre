@@ -855,7 +855,7 @@
         <item>Bageshwar</item>
         <item>Chamoli</item>
         <item>Champawat</item>
-        <item>Dehradun</item>
+        <item>Dehradoon</item>
         <item>Haridwar</item>
         <item>Nainital</item>
         <item>Pauri</item>
@@ -958,8 +958,9 @@
         <item>Cauliflower</item>
         <item>Jowar</item>
         <item>Potato</item>
-        <item>Sefflower</item>
+        <item>Mango</item>
         <item>sunflower</item>
+        <item>Paddy</item>
     </string-array>
 
 
