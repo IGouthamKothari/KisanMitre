@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new MandiFragment());
                     break;
 
+                case R.id.more:
+                    replaceFragment(new MoreFragment());
+                    break;
+
 
             }
             return true;

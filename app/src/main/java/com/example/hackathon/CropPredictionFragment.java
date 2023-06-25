@@ -82,16 +82,11 @@ public class CropPredictionFragment extends Fragment {
                             public void onResponse(String response) {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
-                                    String data = jsonObject.getString("crop");
+                                    String data = jsonObject.getString("crops");
                                     ResultTv.setText(data);
 
                                     // Add a delay of 10 seconds before clearing the result
-                                    new android.os.Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            ResultTv.setText("");
-                                        }
-                                    }, 10000); // 10 seconds delay
+
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();

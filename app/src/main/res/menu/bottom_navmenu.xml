@@ -18,4 +18,8 @@
     <item android:title="Mandi"
         android:icon="@drawable/mandi"
         android:id="@+id/mandi" />
+
+    <item android:title="More"
+        android:icon="@drawable/more"
+        android:id="@+id/more"/>
 </menu>
