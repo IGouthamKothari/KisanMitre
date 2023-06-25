@@ -56,13 +56,13 @@ public class CropPredictionFragment extends Fragment {
         ResultTv = view.findViewById(R.id.resultTV);
 
         // Add TextWatchers for each EditText
-        Nitrogen.addTextChangedListener(createTextWatcher(0, 300, "Enter a value between 0 and 300"));
-        Phosphorus.addTextChangedListener(createTextWatcher(0, 200, "Enter a value between 0 and 200"));
-        Potassium.addTextChangedListener(createTextWatcher(0, 300, "Enter a value between 0 and 300"));
-        Temperature.addTextChangedListener(createTextWatcher(-50, 60, "Enter a value between -50 and 60"));
-        Humidity.addTextChangedListener(createTextWatcher(0, 100, "Enter a value between 0 and 100"));
-        pH.addTextChangedListener(createTextWatcher(1, 14, "Enter a value between 1 and 14"));
-        Rainfall.addTextChangedListener(createTextWatcher(0, 3000, "Enter a value between 0 and 3000"));
+        Nitrogen.addTextChangedListener(createTextWatcher(Nitrogen, 0, 140, "Enter a value between 0 and 140"));
+        Phosphorus.addTextChangedListener(createTextWatcher(Phosphorus, 5, 145, "Enter a value between 5 and 145"));
+        Potassium.addTextChangedListener(createTextWatcher(Potassium, 5, 205, "Enter a value between 5 and 205"));
+        Temperature.addTextChangedListener(createTextWatcher(Temperature, 8, 43, "Enter a value between 8 and 43"));
+        Humidity.addTextChangedListener(createTextWatcher(Humidity, 0, 100, "Enter a value between 0 and 100"));
+        pH.addTextChangedListener(createTextWatcher(pH, 1, 14, "Enter a value between 1 and 14"));
+        Rainfall.addTextChangedListener(createTextWatcher(Rainfall, 0, 300, "Enter a value between 0 and 300"));
 
         Predict.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +111,7 @@ public class CropPredictionFragment extends Fragment {
         });
     }
 
-    private TextWatcher createTextWatcher(final float minValue, final float maxValue, final String errorMessage) {
+    private TextWatcher createTextWatcher(final EditText editText, final float minValue, final float maxValue, final String errorMessage) {
         return new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -126,10 +126,12 @@ public class CropPredictionFragment extends Fragment {
                 try {
                     float value = Float.parseFloat(s.toString());
                     if (value < minValue || value > maxValue) {
-                        s.setError(errorMessage);
+                        editText.setError(errorMessage);
+                    } else {
+                        editText.setError(null);
                     }
                 } catch (NumberFormatException e) {
-                    s.setError("Invalid input");
+                    editText.setError("Invalid input");
                 }
             }
         };
@@ -145,19 +147,19 @@ public class CropPredictionFragment extends Fragment {
             float ph = Float.parseFloat(pH.getText().toString());
             float rainfall = Float.parseFloat(Rainfall.getText().toString());
 
-            if (n < 0 || n > 300) {
+            if (n < 0 || n > 140) {
                 return false;
             }
 
-            if (p < 0 || p > 200) {
+            if (p < 5 || p > 145) {
                 return false;
             }
 
-            if (k < 0 || k > 300) {
+            if (k < 5 || k > 205) {
                 return false;
             }
 
-            if (temp < -50 || temp > 60) {
+            if (temp < 8 || temp > 43) {
                 return false;
             }
 
@@ -169,7 +171,7 @@ public class CropPredictionFragment extends Fragment {
                 return false;
             }
 
-            if (rainfall < 0 || rainfall > 3000) {
+            if (rainfall < 0 || rainfall > 300) {
                 return false;
             }
 
