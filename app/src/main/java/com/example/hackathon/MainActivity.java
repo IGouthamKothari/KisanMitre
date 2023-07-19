@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.weather:
                     replaceFragment(new WeatherFragment());
                     break;
+
+                case R.id.mandi:
+                    replaceFragment(new MandiFragment());
+                    break;
+
+                case R.id.more:
+                    replaceFragment(new MoreFragment());
+                    break;
+
 
             }
             return true;

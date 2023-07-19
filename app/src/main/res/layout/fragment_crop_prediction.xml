@@ -5,7 +5,8 @@
     android:id="@+id/constraintforfragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CropPredictionFragment">
+    tools:context=".CropPredictionFragment"
+    android:background="@color/purple_500">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -27,20 +28,23 @@
                 android:textSize="30sp"
                 android:layout_marginTop="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editTextNitrogen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="15"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 android:hint="Nitrogen content"
                 android:inputType="textPersonName"
                 android:textSize="20sp"
                 android:layout_marginTop="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tagline" />
+                app:layout_constraintTop_toBottomOf="@+id/tagline"
+                />
 
             <EditText
                 android:id="@+id/editTextPhosphorus"
@@ -53,7 +57,9 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNitrogen" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextNitrogen"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
 
             <EditText
                 android:id="@+id/editTextPotassium"
@@ -66,7 +72,9 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPhosphorus" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextPhosphorus"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
 
             <EditText
                 android:id="@+id/editTextTemperature"
@@ -79,7 +87,9 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPotassium" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextPotassium"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
 
             <EditText
                 android:id="@+id/editTextHumidity"
@@ -92,7 +102,9 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTemperature" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextTemperature"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
 
             <EditText
                 android:id="@+id/editTextPh"
@@ -105,7 +117,9 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextHumidity" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextHumidity"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
 
             <EditText
                 android:id="@+id/editTextRainfall"
@@ -118,7 +132,9 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPh" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextPh"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
 
             <Button
                 android:id="@+id/predictButton"
@@ -135,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:layout_marginTop="15sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -201,7 +201,7 @@ public class WeatherFragment extends Fragment {
 
                     }else{
                         Log.d("TAG","CITY NOT FOUND");
-                        Toast.makeText(getContext(), "USER CITY NOT FOUND", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }

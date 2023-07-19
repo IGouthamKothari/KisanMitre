@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintforfragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CropPredictionFragment"
+    android:background="@color/purple_500">
+
+    <!-- Relative Layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:textSize="18sp"
+            android:text="Today Mandi Price"
+            android:textStyle="bold"
+
+            android:textAlignment="center"
+            android:textColor="#555555" />
+
+        <TextView
+            android:id="@+id/textView_indian_states"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome_text"
+            android:layout_marginTop="30dp"
+            android:padding="6dp"
+            android:text="State*"
+
+            android:textColor="#555555"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+
+
+        <Spinner
+            android:id="@+id/spinner_indian_states"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/textView_indian_states"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/textView_indian_districts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinner_indian_states"
+            android:layout_marginTop="30dp"
+            android:padding="6dp"
+            android:text="District*"
+            android:textColor="#555555"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+           />
+
+        <Spinner
+            android:id="@+id/spinner_indian_districts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/textView_indian_districts" />
+
+        <TextView
+            android:id="@+id/textView_crop_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinner_indian_districts"
+            android:layout_marginTop="30dp"
+            android:padding="6dp"
+            android:text="Crop*"
+            android:textColor="#555555"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_crop_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/textView_crop_selection" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinner_crop_selection"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="Submit"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/minPriceTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_search"
+            android:layout_marginTop="20dp"
+            android:text="MinPrice"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/maxPriceTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/minPriceTV"
+            android:layout_marginTop="20dp"
+            android:text="MaxPrice"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mandiTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maxPriceTV"
+            android:layout_marginTop="20dp"
+            android:text="Mandi Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+
+
+    </RelativeLayout>
+    <!-- End of Relative Layout -->
+
+</FrameLayout>

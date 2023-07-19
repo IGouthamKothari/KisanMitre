@@ -3,13 +3,23 @@
 
     <item android:title="Home"
         android:icon="@drawable/home"
-        android:id="@+id/home"/>
+        android:id="@+id/home"
+        android:tint="@android:color/black"/>
 
     <item android:title="Crop Prediction"
         android:icon="@drawable/crop"
-        android:id="@+id/cropPrediction"/>
+        android:id="@+id/cropPrediction"
+        android:tint="@android:color/black"/>
 
     <item android:title="Weather"
         android:icon="@drawable/weather"
         android:id="@+id/weather"/>
+
+    <item android:title="Mandi"
+        android:icon="@drawable/mandi"
+        android:id="@+id/mandi" />
+
+    <item android:title="More"
+        android:icon="@drawable/more"
+        android:id="@+id/more"/>
 </menu>
